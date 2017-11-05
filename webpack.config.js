@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");//css
-var providePlugin = new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' });
 module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
@@ -42,8 +41,12 @@ module.exports = {
 		extensions: ['.js', '.jsx'],
 	},
 	plugins: [
-		providePlugin,
-		new ExtractTextPlugin('bundle.css')
+		new ExtractTextPlugin('bundle.css'),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+			  warnings: false
+			}
+		})
 	]
 }
 

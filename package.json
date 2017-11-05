@@ -32,7 +32,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf static && rm -rf lib && webpack -d",
+    "build": "rm -rf static && webpack -d",
     "start": "webpack-dev-server --progress --colors --devtool source-map"
   },
   "repository": {
