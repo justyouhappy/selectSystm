@@ -1,6 +1,15 @@
-.abc {
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    color: white;
+.bodyer {
+    width: 980px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: white;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+body {
+    background: #E7E7E7;
 }
