@@ -1,10 +1,43 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");//css
+var ImageminPlugin = require('imagemin-webpack-plugin').default;//压缩图片
+var plugins = [
+	new ExtractTextPlugin('bundle.css'),
+	new webpack.DefinePlugin({
+		'process.env':{
+		  'NODE_ENV': JSON.stringify('process.env.NODE_ENV')
+		}
+	}),
+	new ImageminPlugin({
+		disable: process.env.NODE_ENV !== 'production', 
+		pngquant: {
+		  quality: '95-100'
+		}
+	})
+]
+if(process.env.NODE_ENV === 'production') {
+	plugins.push(new webpack.optimize.UglifyJsPlugin({
+		beautify: false,
+		// 删除所有的注释
+		comments: false,
+		compress: {
+			  // 在UglifyJs删除没有用到的代码时不输出警告  
+			  warnings: false,
+			  // 删除所有的 `console` 语句
+			  // 还可以兼容ie浏览器
+			  drop_console: true,
+			  // 内嵌定义了但是只用到一次的变量
+			  collapse_vars: true,
+			  // 提取出出现多次但是没有定义成变量去引用的静态值
+			  reduce_vars: true,
+		  }
+  }));
+}
 module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
 		path: __dirname + '/static/',
-		publicPath: 'http://localhost:8080/static/',
+		publicPath: process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/static/',
 		filename: 'index.js'
 	},
 	module: {
@@ -28,7 +61,7 @@ module.exports = {
                     plugins: [["import", { libraryName: "antd", style: "css" }]]
 				}
 			},
-			{ test: /\.(jpg|png)$/, use: ['url-loader'] }
+			{ test: /\.(jpg|png)$/, use: ['url-loader?limit=8192&name=img/[hash:8].[name].[ext]'] }
 		]
 	},
 	devServer: {
@@ -40,19 +73,7 @@ module.exports = {
 		modules: ['node_modules'],
 		extensions: ['.js', '.jsx'],
 	},
-	plugins: [
-		new ExtractTextPlugin('bundle.css'),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-			  warnings: false
-			}
-		}),
-		new webpack.DefinePlugin({
-			'process.env':{
-			  'NODE_ENV': JSON.stringify('production')
-			}
-		})
-	]
+	plugins,
 }
 
 
