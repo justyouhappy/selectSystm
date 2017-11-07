@@ -12,7 +12,6 @@ import {
 // fetchdata(//地址字符串).then(data => {
 //    data 获取的数据
 // });
-
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
@@ -21,11 +20,10 @@ class Main extends React.Component {
 		}
 	}
 	render() {
-		const { information } = this.state;
 		return (
             <div className="bodyer">  
 				<TopImg num={10000}/>
-				<Content className="content" information={information}/>	
+				<Content className="content"/>	
             </div>
 		);
 	}

@@ -1,2 +1,2 @@
 import makeActionCreator from '../../common/actionCreator';
-export const setName = makeActionCreator('setName', 'param');
+export const setInformation = makeActionCreator('setInformation', 'param');

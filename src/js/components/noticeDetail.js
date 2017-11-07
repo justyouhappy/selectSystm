@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../scss/informationDetail.scss';
+import '../../scss/noticeDetail.scss';
 
 
-class InformationDetail extends React.Component {
+class NoticeDetail extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -17,4 +17,4 @@ class InformationDetail extends React.Component {
 
 	}
 }
-export default InformationDetail
+export default NoticeDetail
