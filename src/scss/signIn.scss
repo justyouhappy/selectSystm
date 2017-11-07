@@ -1,8 +1,13 @@
 .sign-in-body-all {
-    width : 362px;
+    width : 350px;
+    height: 350px;
     border : 1px solid #ccc;
     .sign-in-body-top {
         border-bottom: 1px solid #ccc;
+    }
+    .sign-in-body-under {
+        margin-top: 30px;
+        position: relative;
     }
     .sign-in-body-middle {
         .example-input {
@@ -12,14 +17,19 @@
                 padding-top: 7px;
                 color : red;
             }
+            .signinput{
+                height: 35px;
+                margin-bottom : 14px;
+            }
         }
-        .signinput{
-            margin-bottom : 7px;
-        }
+       
     }
     .signbtn {
+        position: absolute;
+        left: 0;
+        right: 0;
         width : 300px;
-        margin : 10px 31px 30px;
+        margin : 30px auto;
     }
 }
 .card-container > .ant-tabs-card > .ant-tabs-content {

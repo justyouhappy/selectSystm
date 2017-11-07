@@ -14,11 +14,14 @@ class SignIn extends React.Component {
 		this.state = {
 			staus: "0",
 			userName: '',
-			tel : ''
+			tel : '',
+			password : ''
 		}
 		this.onChange = this.onChange.bind(this);
 		this.userChange = this.userChange.bind(this);
 		this.telChange = this.telChange.bind(this);
+		this.passwordChange = this.passwordChange.bind(this);
+		this.getMessage = this.getMessage.bind(this);
 	}
 	onChange(e) {
 		this.setState({
@@ -37,9 +40,17 @@ class SignIn extends React.Component {
 			tel
 		})
 	}
-	
+	passwordChange(e) {
+		const password = e.target.value;
+		this.setState({
+            password
+		})
+	}
+	getMessage() {
+		console.log(this.state);
+	}
 	render() {
-		const { staus, userName, tel } = this.state;
+		const { staus, userName, tel, password } = this.state;
         return(
             <div className="sign-in-body">
 				<div className="sign-in-body-all">
@@ -54,13 +65,13 @@ class SignIn extends React.Component {
 							<div className="example-input">
 									<Input size="large" onChange={this.userChange} placeholder="学号/工号" value={userName} className="signinput"/>
 									{staus === "0" && <Input size="large" placeholder="电话号码" value={tel} onChange={this.telChange} className="signinput" />}
-									<Input size="large" placeholder="密码" type="password" className="signinput"/>
+									<Input size="large" placeholder="密码" value={password} onChange={this.passwordChange} type="password" className="signinput"/>
 									<div className="sign-in-body-bottom">
 										<span className="sign-in-tips">注：首次登陆密码为123456</span>
 									</div>
+							</div>
 						</div>
-						<Button type="primary" size={this.props.size} className="signbtn">登录</Button>
-					</div>
+						<Button type="primary" size={this.props.size} className="signbtn" onClick={this.getMessage}>登录</Button>
 					</div>
 				</div>
             </div>
