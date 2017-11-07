@@ -10,7 +10,9 @@ class ContentMain extends React.Component {
 		}
 	}
 	render() {
-        const { setInformation, changeId } = this.props;
+		const { setInformation, changeId } = this.props;
+		console.log(setInformation);
+		
         return(
             <div className="contnet-main-body">
                 <InformationList className="information-list" setInformation={setInformation} changeId={changeId}/>

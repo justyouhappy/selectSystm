@@ -1,0 +1,31 @@
+.informationItem {
+    width: 500px;
+    padding: 9px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+}
+
+.informationItem .informationItem-rect {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #999;
+}
+
+.informationItem .informationItem-content {
+    cursor: pointer;
+    width: 450px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;    
+    -o-text-overflow:ellipsis;
+    padding: 0 15px;
+    display: inline-block;
+}
+
+.informationItem-content:hover {
+    color: blue;
+}
