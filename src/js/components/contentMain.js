@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../scss/contentMain.scss';
 import InformationList from './informationList';
-
+import SignIn from './signIn';
 
 class ContentMain extends React.Component {
 	constructor(props) {
@@ -13,7 +13,10 @@ class ContentMain extends React.Component {
         const { setInformation, changeId } = this.props;
         return(
             <div className="contnet-main-body">
-                <InformationList className="information-list" setInformation={setInformation} changeId={changeId}/>
+				<div className="first-row">
+					<InformationList className="information-list" setInformation={setInformation} changeId={changeId}/>
+					<SignIn />	
+				</div>
             </div>
         )
 
