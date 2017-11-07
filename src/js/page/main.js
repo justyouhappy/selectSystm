@@ -3,7 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../redux/action/mainAction';
 import fetchdata from '../common/fetch';
-import TopImg from '../components/topImg'
+import TopImg from '../containers/topImg';
+import Content from '../containers/content';
 import '../../scss/main.scss';
 import {
     Button
@@ -16,12 +17,15 @@ class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			information: false
 		}
 	}
 	render() {
+		const { information } = this.state;
 		return (
             <div className="bodyer">  
-				<TopImg num={10000}/>	
+				<TopImg num={10000}/>
+				<Content className="content" information={information}/>	
             </div>
 		);
 	}
