@@ -1,0 +1,46 @@
+.sign-in-body-all {
+    width : 362px;
+    border : 1px solid #ccc;
+    .sign-in-body-top {
+        border-bottom: 1px solid #ccc;
+    }
+    .sign-in-body-middle {
+        .example-input {
+            width : 300px;
+            margin: 14px auto;
+            .sign-in-tips {
+                padding-top: 7px;
+                color : red;
+            }
+        }
+        .signinput{
+            margin-bottom : 7px;
+        }
+    }
+    .signbtn {
+        width : 300px;
+        margin : 10px 31px 30px;
+    }
+}
+.card-container > .ant-tabs-card > .ant-tabs-content {
+    margin-top: -11px;
+    margin-bottom: 5px;
+  }
+  
+.card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
+background: #fff;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar {
+border-color: #fff;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+border-color: transparent;
+background: transparent;
+}
+
+.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+border-color: #fff;
+background: #fff;
+}
