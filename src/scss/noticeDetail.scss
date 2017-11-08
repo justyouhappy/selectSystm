@@ -1,0 +1,32 @@
+.noticeDetal{
+    position: relative;
+    .noticeDetal-title{
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .noticeDetal-content{
+        padding-top: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        overflow-y: scroll;
+        height: 400px;
+        // white-space: pre;
+        .noticeDetal-content-detal {
+            padding: 5px 0;
+        }
+    }
+    .noticeDetal-back {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 20px;
+        color: #999;
+
+        &:hover {
+            color: orange;
+        }
+    }
+}

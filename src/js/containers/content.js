@@ -24,10 +24,11 @@ class Content extends React.Component {
 	render() {
         const { id } = this.state;
         const { information, className, actions } = this.props;
+        console.log(information)
         const { setInformation } = actions;
         return(
             <div className={(className || "" )+ " content-body"} >
-                {information ? <NoticeDetail id={id}/> : <ContentMain setInformation={setInformation} changeId={this.changeId}/>}
+                {information ? <NoticeDetail setInformation={setInformation} id={id}/> : <ContentMain setInformation={setInformation} changeId={this.changeId}/>}
             </div>
         )
 
