@@ -24,7 +24,7 @@ class ConfirmModal extends React.Component {
 	}
 
 	handleOk() {
-		if(this.state.firPassword == this.state.secPassword) {
+		if(this.state.firPassword == this.state.secPassword ) {
 			var promise = new Promise((resolve, reject) => {
 				this.setState({
 					success: true
@@ -42,9 +42,11 @@ class ConfirmModal extends React.Component {
 				}	
 			})
 			
-		}else{
+		}else if(this.state.firPassword !== this.state.secPassword&this.state.firPassword<=16 & this.state.firPassword >=6){
 			var wrongInput = document.getElementById("error");
 			wrongInput.className = "wrongInputShow"
+			console.log("fail")
+		}else{
 			console.log("fail")
 		}
 	}
@@ -114,7 +116,8 @@ class ConfirmModal extends React.Component {
 			</div>
 			<div className="second">
 				<label htmlFor="sec">请确认密码:
-					<span  id="error" className="wrongInput">  两次密码输入不一致!</span>
+					<span  id="error" className="wrongInput">  两次密码输入不一致！</span>
+
 				</label>
 				<div className="Input">
 					<Input id="sec" placeholder="再次确认您的密码" onChange={this.secPassword} onPressEnter={this.confirm} type="password"/>
