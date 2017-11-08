@@ -38,7 +38,7 @@ class ConfirmModal extends React.Component {
 				if(this.state.success & this.state.havePassword) {
 					console.log(this.state.firPassword + ':' + this.state.secPassword)//此处是提交的信息
 				}else{
-					console.log("未填写密码")
+					console.log("未填写密码啊")
 				}	
 			})
 			
