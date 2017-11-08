@@ -8,7 +8,7 @@ class ContentMain extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			visible: true
+			visible: false
 		}
 		this.onHidden = this.onHidden.bind(this);
 		this.onShow = this.onShow.bind(this);

@@ -1,56 +1,60 @@
-.sign-in-body-all {
+.sign-in-body {
     width : 350px;
-    height: 350px;
-    border : 1px solid #ccc;
-    .sign-in-body-top {
-        border-bottom: 1px solid #ccc;
+    height: 340px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    .sign-in-title {
+        display: flex;
+        height: 50px;
+        div {
+            height: 50px;
+            width: 50%;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+            color: #ccc;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            &.active {
+                color: white;
+                border: none;
+                font-weight: bold;
+                background-color: #108ee9;
+                &:hover {
+                    color: white; 
+                }
+            }
+            &:hover {
+                color: black
+            }
+        }
+        .teacher {
+            border-right: 1px solid #ccc;
+        }
     }
     .sign-in-body-under {
-        margin-top: 30px;
+        height: 300px;
         position: relative;
-    }
-    .sign-in-body-middle {
-        .example-input {
+        .btn-box {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 20px auto 40px;
             width : 300px;
-            margin: 14px auto;
+            height: 230px;
             .sign-in-tips {
                 padding-top: 7px;
                 color : red;
             }
             .signinput{
                 height: 35px;
-                margin-bottom : 14px;
+                margin: 12px auto 0;
+            }
+            .sign-btn {
+                margin-top: 20px; 
+                width: 100%;
             }
         }
-       
     }
-    .signbtn {
-        position: absolute;
-        left: 0;
-        right: 0;
-        width : 300px;
-        margin : 30px auto;
-    }
-}
-.card-container > .ant-tabs-card > .ant-tabs-content {
-    margin-top: -11px;
-    margin-bottom: 5px;
-  }
-  
-.card-container > .ant-tabs-card > .ant-tabs-content > .ant-tabs-tabpane {
-background: #fff;
-}
-
-.card-container > .ant-tabs-card > .ant-tabs-bar {
-border-color: #fff;
-}
-
-.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
-border-color: transparent;
-background: transparent;
-}
-
-.card-container > .ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
-border-color: #fff;
-background: #fff;
 }
