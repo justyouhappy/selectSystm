@@ -13,6 +13,7 @@ class ConfirmModal extends React.Component {
 	}
 	render() {
 		const { onHidden } = this.props;
+		console.log(onHidden);
         return(
             <Modal
 				visible

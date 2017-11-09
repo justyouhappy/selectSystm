@@ -17,10 +17,10 @@ class informationItem extends React.Component {
                 const {  title, changeId } = this.props;
                 // const { className } = this.props;
                 return(
-                <div className="informationItem">
-                        <div className="informationItem-rect"></div>
-                        <div onClick={this.onClick} className="informationItem-content">{title}</div>
-                </div>
+                        <div className="informationItem">
+                                <div className="informationItem-rect"></div>
+                                <div onClick={this.onClick} className="informationItem-content">{title}</div>
+                        </div>
                 )
 	}
 }
