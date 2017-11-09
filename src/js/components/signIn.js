@@ -14,7 +14,8 @@ class SignIn extends React.Component {
 			userName: '',
 			tel : '',
 			password : '',
-			Errorshow: false
+			Errorshow: false,
+			errorMessage: ''
 		}
 		this.onChange = this.onChange.bind(this);
 		this.userChange = this.userChange.bind(this);
@@ -51,6 +52,7 @@ class SignIn extends React.Component {
 		})
 	}
 	signIn() {
+		this.props.onShow();
 		let errorMessage = '';
 		const { staus, userName, tel, password } = this.state;
 		if(userName == '' && staus == '0') { 
@@ -88,7 +90,7 @@ class SignIn extends React.Component {
                 </div>
                 <div className="sign-in-body-under">
                     <div className="btn-box">
-					    {Errorshow && <Alert message={errorMessage} type="error" showIcon className="signInAlert" />}
+					    {Errorshow && <Alert message={errorMessage} type="error" showIcon />}
                         <Input size="large" onChange={this.userChange} placeholder={staus === "0" ? "学号/工号": '管理员账号'} value={userName} className="signinput"/>
                         {staus === "0" && <Input size="large" placeholder="电话号码" value={tel} onChange={this.telChange} className="signinput" />}
                         <Input size="large" placeholder="密码" value={password} onChange={this.passwordChange} type="password" className="signinput"/>

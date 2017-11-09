@@ -15,16 +15,13 @@ class Content extends React.Component {
         this.changeId = this.changeId.bind(this);
     }
     changeId(id) {
-        console.log(id);
         this.setState({
             id
         })
-        console.log(this.state.id);
     }
 	render() {
         const { id } = this.state;
         const { information, className, actions } = this.props;
-        console.log(information)
         const { setInformation } = actions;
         return(
             <div className={(className || "" )+ " content-body"} >
