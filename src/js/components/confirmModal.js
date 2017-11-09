@@ -36,16 +36,21 @@ class ConfirmModal extends React.Component {
 				var wrongInput = document.getElementById("error");
 				wrongInput.className = "wrongInput";
 				if(this.state.success & this.state.havePassword) {
+					this.setState({
+						visible: false
+					});
 					console.log(this.state.firPassword + ':' + this.state.secPassword)//此处是提交的信息
 				}else{
-					console.log("未填写密码啊")
+					const lessMore = document.getElementById('lessMore');
+					lessMore.className = "wrongInputShow";
+					lessMore.innerHTML = " 您未填写任何密码";
 				}	
 			})
 			
-		}else if(this.state.firPassword !== this.state.secPassword&this.state.firPassword<=16 & this.state.firPassword >=6){
+		}else if(this.state.firPassword !== this.state.secPassword & this.state.firPassword<=16 & this.state.firPassword >=6){
 			var wrongInput = document.getElementById("error");
 			wrongInput.className = "wrongInputShow"
-			console.log("fail")
+			console.log("fail1")
 		}else{
 			console.log("fail")
 		}
@@ -53,13 +58,16 @@ class ConfirmModal extends React.Component {
 
 	firPassword(e) {
 		const firPassword = e.target.value;
-		const less6 = document.getElementById('lessMore')
-		if(firPassword.length < 6) {		
+		const lessMore = document.getElementById('lessMore')
+		if(firPassword.length == 0){
+			lessMore.className = "wrongInput";
+			this.setState({
+				firPassword,
+				havePassword: false
+			})			
+		}else if(firPassword.length < 6 || firPassword.length > 16) {		
 			lessMore.className = "wrongInputShow";
-			lessMore.innerHTML = " 密码的长度不得少于6位";
-		}else if(firPassword.length > 16) {			
-			lessMore.className = "wrongInputShow";
-			lessMore.innerHTML = " 密码的长度不得超过16位"
+			lessMore.innerHTML = " 	请您填写一个长度为6~16位的密码";
 		}else{
 			lessMore.className = "wrongInput"
 			this.setState({
@@ -73,7 +81,8 @@ class ConfirmModal extends React.Component {
 		var wrongInput = document.getElementById("error");
 			wrongInput.className = "wrongInput"
 		const secPassword = e.target.value;
-			this.setState({
+			
+		this.setState({
 			secPassword
 		})
 		
