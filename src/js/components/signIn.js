@@ -91,7 +91,7 @@ class SignIn extends React.Component {
                 <div className="sign-in-body-under">
                     <div className="btn-box">
 					    {Errorshow && <Alert message={errorMessage} type="error" showIcon />}
-                        <Input size="large" onChange={this.userChange} placeholder={staus === "0" ? "学号/工号": '管理员账号'} value={userName} className="signinput"/>
+                        <Input size="large" onChange={this.userChange} placeholder={staus === "0" ? "学号/老师办公电话": '管理员账号'} value={userName} className="signinput"/>
                         {staus === "0" && <Input size="large" placeholder="电话号码" value={tel} onChange={this.telChange} className="signinput" />}
                         <Input size="large" placeholder="密码" value={password} onChange={this.passwordChange} type="password" className="signinput"/>
                         {staus === "0" && <div className="sign-in-tips">注：首次登陆密码为123456</div>}
