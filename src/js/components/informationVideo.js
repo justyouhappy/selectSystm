@@ -26,11 +26,16 @@ class informationVideo extends React.Component {
                     <div className = 'video-title-line'></div>
                 </div>
                 <div className = 'main-video-content'>
-                    <div className = 'video-content'>
-                        <video onPause={()=> {
+                    <video 
+                        onPause={()=> {
                             this.setState({playing: false});
-                        }} ref="videoPlays" controls width="600" height="400" className = 'video-content-source'  src={video}></video>  
-                    </div>
+                        }}
+                        ref="videoPlays"
+                        controls width="600"
+                        height="400" 
+                        className = 'video-content-source'
+                        src={video}
+                    ></video>  
                     <div ref="plays" className ="video-shelter" ref="plays" >
                         <div onClick = { this.clickHandle.bind(this)} className = {this.state.playing ? 'video-shelter-btn shelter-btn-play' : 'video-shelter-btn'}></div>
                     </div>
