@@ -3,6 +3,7 @@ import '../../scss/contentMain.scss';
 import InformationList from './informationList';
 import SignIn from './signIn';
 import ConfirmModel from './confirmModal';
+import InformationVideo from './informationVideo';
 
 class ContentMain extends React.Component {
 	constructor(props) {
@@ -33,6 +34,7 @@ class ContentMain extends React.Component {
 					<SignIn onHidden={this.onHidden} onShow={this.onShow}/>
 					{visible && <ConfirmModel onHidden={this.onHidden}/>}
 				</div>
+				<InformationVideo/>
             </div>
         )
 
