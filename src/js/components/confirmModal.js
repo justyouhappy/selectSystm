@@ -71,7 +71,7 @@ class ConfirmModal extends React.Component {
 					</Button>,
 				]}
 			>
-				{Errorshow && <Alert message={message} type="error" showIcon />}
+				{Errorshow && <Alert message={message} className="alert" type="error" showIcon />}
 				<div className="input-box">
 					<Input size="large" className="input" addonBefore="请输入密码:" value={firPassword} placeholder="在此输入新的密码" onChange={this.firPassword} type="password"/>
 					<Input size="large" className="input" addonBefore="请确认密码:" value={secPassword} placeholder="再次确认您的密码" onChange={this.secPassword} type="password"/>
