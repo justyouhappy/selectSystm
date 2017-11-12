@@ -37,7 +37,7 @@ module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
 		path: __dirname + '/static/',
-		publicPath: '',
+		publicPath: process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/static',
 		filename: 'index.js'
 	},
 	module: {
@@ -61,7 +61,7 @@ module.exports = {
                     plugins: [["import", { libraryName: "antd", style: "css" }]]
 				}
 			},
-			{ test: /\.(jpg|png)$/, use: ['url-loader?limit=8192&name=img/[hash:8].[name].[ext]', 'file-loader'] },			
+			{ test: /\.(jpg|png)$/, use: ['url-loader?limit=8192&name=img/[hash:8].[name].[ext]'] },			
 		]
 	},
 	devServer: {
