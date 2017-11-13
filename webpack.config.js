@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");//css
 var ImageminPlugin = require('imagemin-webpack-plugin').default;//压缩图片
+var config = require('./config.js');
+var url = process.env.NODE_ENV !== 'production' ?  config.startUrl : config.buildUrl
 var plugins = [
 	new ExtractTextPlugin('bundle.css'),
 	new webpack.DefinePlugin({
@@ -37,7 +39,7 @@ module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
 		path: __dirname + '/static/',
-		publicPath: process.env.NODE_ENV === 'production' ? '' : 'http://localhost:8080/static',
+		publicPath: process.env.NODE_ENV === 'production' ? './static': 'http://localhost:8080/static',
 		filename: 'index.js'
 	},
 	module: {
@@ -65,7 +67,16 @@ module.exports = {
 		]
 	},
 	devServer: {
+		host: "0.0.0.0",
 		port: 8080,
+		disableHostCheck: true,
+		proxy: {
+			"/api/*": {
+				target: url,
+				secure: false,
+				changeOrigin: true
+			}
+		},
 		historyApiFallback: true,
 		inline: true, //注意：不写hot: true，否则浏览器无法自动更新；也不要写colors:true，progress:true等，webpack2.x已不支持这些
 	},

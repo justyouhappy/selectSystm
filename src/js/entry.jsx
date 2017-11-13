@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import createstore from './redux/store/store';
 import {syncHistoryWithStore} from 'react-router-redux';
 import Main from './page/main';  // 首页
+import Success from './page/success'; //登录成功页
 const store = createstore();
 const history = syncHistoryWithStore(hashHistory, store);
 
@@ -16,13 +17,13 @@ class App extends React.Component {
 	// componentWillUnmount() {},
 	// componentWillReceiveProps(nextProps) {},
 	// shouldComponentUpdate(nextProps, nextState) {},
-
 	render() {
 		return (
 			<Provider store={store}>
 				<Router history={history}>	
 					<Route >
 						<Route path="/" component={Main} />
+						<Route path="/success" component={Success}/>	
 					</Route>
 				</Router>
 			</Provider>

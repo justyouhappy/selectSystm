@@ -5,6 +5,7 @@ import {
 	Input,
 	Alert
  } from 'antd';
+ import fetchData from '../common/fetch'; 
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -52,7 +53,6 @@ class SignIn extends React.Component {
 		})
 	}
 	signIn() {
-		this.props.onShow();
 		let errorMessage = '';
 		const { staus, userName, tel, password } = this.state;
 		if(userName == '' && staus == '0') { 
@@ -71,12 +71,25 @@ class SignIn extends React.Component {
 			});
 		} else {
 			let message = {
-				staus,
 				userName,
-				tel,
 				password
 			}
-			console.log(message);
+			if(status == 0) {
+				message.tel = tel;
+				fetchData('/api/adminSign', {method: 'post', data: message}).then(data => {
+					window.signInData = data;					
+					if(data.first) {
+						this.props.onShow();						
+					} else {
+						//跳转到登录成功页
+					}
+				});
+			} else {
+				fetchData('/api/sigin', {method: 'post', data: message}).then(data => {
+					window.signInData = data;
+					//跳转到登录成功页
+				});
+			}
 		}
 
 	}
