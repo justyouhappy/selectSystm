@@ -2,6 +2,7 @@ import React from 'react';
 import '../../scss/confirmModel.scss';
 import { Modal, Input, Alert, Button } from 'antd';
 import '../../scss/confirmModel.scss';
+import fetchData from '../common/fetch';
 
 class ConfirmModal extends React.Component {
 	constructor(props) {
@@ -24,7 +25,25 @@ class ConfirmModal extends React.Component {
 		if(Errorshow || firPassword == '') {
 			return;
 		}
-		console.log('验证通过');
+		fetchData('update/password', {method: 'post', data: {
+			status: window.signInData.status,
+			password: firPassword,
+			id:window.signInData.userId
+		}}).then(data => {
+			if(data.message) {
+				this.props.router.push('/success');
+			} else {
+				this.setState({
+					Errorshow: true,
+					message: '修改失败，请重试'
+				});
+			}
+		}, () => {
+			this.setState({
+				Errorshow: true,
+				message: '网络错误'
+			});
+		});
 	}
 
 	firPassword(e) {

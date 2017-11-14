@@ -19,7 +19,7 @@ class Main extends React.Component {
 		return (
             <div className="bodyer">  
 				<TopImg num={window.num}/>
-				<Content className="content"/>	
+				<Content className="content" router={this.props.router}/>	
             </div>
 		);
 	}

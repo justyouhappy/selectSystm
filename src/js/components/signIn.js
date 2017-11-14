@@ -3,7 +3,8 @@ import '../../scss/signIn.scss';
 import { 
 	Button,
 	Input,
-	Alert
+	Alert,
+	Modal
  } from 'antd';
  import fetchData from '../common/fetch'; 
 
@@ -63,6 +64,12 @@ class SignIn extends React.Component {
 			errorMessage = '请您输入电话号';
 		} else if(this.state.password == '') {
 			errorMessage = '请您输入密码';
+		} else if(userName.length != 10 && userName.length != 8) {
+			errorMessage = '用户名长度错误';
+		} else if(tel.length != 11 && tel) {
+			errorMessage = '手机号格式错误'
+		} else if(password.length < 6) {
+			errorMessage = '密码长度错误';
 		}
 		if(errorMessage) {
 			this.setState({
@@ -70,26 +77,36 @@ class SignIn extends React.Component {
 				Errorshow: true
 			});
 		} else {
+			this.setState({
+				errorMessage: '',
+				Errorshow: false
+			});
 			let message = {
-				userName,
-				password
+				id_tel: userName,
+				password,
+				mb: tel
 			}
-			if(status == 0) {
-				message.tel = tel;
-				fetchData('/api/adminSign', {method: 'post', data: message}).then(data => {
-					window.signInData = data;					
+			fetchData('login/teacher_student', {method: 'post', data: message}).then(data => {
+				if(data.error) {
+					Modal.error({
+						title: '发生错误',
+						content: data.error,
+					});
+				} else {
+					window.signInData = data;
 					if(data.first) {
 						this.props.onShow();						
 					} else {
 						//跳转到登录成功页
+						this.props.router.push('/success');
 					}
+				}
+			}, () => {
+				Modal.error({
+					title: '发生错误',
+					content: '获取数据失败，请检查网络',
 				});
-			} else {
-				fetchData('/api/sigin', {method: 'post', data: message}).then(data => {
-					window.signInData = data;
-					//跳转到登录成功页
-				});
-			}
+			});
 		}
 
 	}

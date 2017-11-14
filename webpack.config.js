@@ -4,7 +4,7 @@ var ImageminPlugin = require('imagemin-webpack-plugin').default;//压缩图片
 var config = require('./config.js');
 var url = process.env.NODE_ENV !== 'production' ?  config.startUrl : config.buildUrl
 var plugins = [
-	new ExtractTextPlugin('bundle.css'),
+	new ExtractTextPlugin('css/bundle.css'),
 	new webpack.DefinePlugin({
 		'process.env':{
 		  'NODE_ENV': JSON.stringify('process.env.NODE_ENV')
@@ -38,9 +38,9 @@ if(process.env.NODE_ENV === 'production') {
 module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
-		path: __dirname + '/static/',
-		publicPath: process.env.NODE_ENV === 'production' ? './static': 'http://localhost:8080/static',
-		filename: 'index.js'
+		path: __dirname + '/statics',
+		publicPath: process.env.NODE_ENV === 'production' ? './statics': 'http://localhost:8080/statics',
+		filename: 'js/index.js'
 	},
 	module: {
 		rules: [
@@ -63,7 +63,7 @@ module.exports = {
                     plugins: [["import", { libraryName: "antd", style: "css" }]]
 				}
 			},
-			{ test: /\.(jpg|png)$/, use: ['url-loader?limit=8192&name=img/[hash:8].[name].[ext]'] },			
+			{ test: /\.(jpg|png)$/, use: ['url-loader?limit=8192&name=image/[hash:8].[name].[ext]'] },			
 		]
 	},
 	devServer: {
@@ -71,7 +71,17 @@ module.exports = {
 		port: 8080,
 		disableHostCheck: true,
 		proxy: {
-			"/api/*": {
+			"/notice/*": {
+				target: url,
+				secure: false,
+				changeOrigin: true
+			},
+			"/login/*": {
+				target: url,
+				secure: false,
+				changeOrigin: true
+			},
+			"/update/*": {
 				target: url,
 				secure: false,
 				changeOrigin: true

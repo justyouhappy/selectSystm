@@ -3,7 +3,7 @@ export default function fetchdata(url, config) {
 		credentials: 'same-orgin'//此属性配置是为了携带同源cookie，还有其他两个值
 	}//配置fetch要球的第二个参数，自定义请求的参数
 	config = config || {};
-	if ((config.method === 'get' || config.method === 'GET') && config.data) {
+	if ((config.method === 'get' || config.method === 'GET' || !config.method) && config.data) {
 		url += (url.indexOf('?') === -1 ? '?' : '&') + Object.keys(config.data).map(key => {
 			return key + '=' + config.data[key]//不可以写成config.data.key,原因：太简单了，自己查，如果有信息保密需求的，最好把数据解析成和后端商议好的进制模式
 		})

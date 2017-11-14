@@ -18,25 +18,31 @@ class Success extends React.Component {
 		this.state = {
 			information: false
 		}
+		this.onChange = this.onChange.bind(this);
+	}
+	componentWillMount() {
+		if(!window.signInData) {
+			this.props.router.push('/');
+		}
+	}
+	onChange(e) {
+		if(e == '7') {
+			window.signInData = '';
+			this.props.router.push('/');
+		}
 	}
 	render() {
 		return (
             <div className="bodyer">  
 				<TopImg num={window.num}/>
-                <Tabs type="card">
+                <Tabs type="card" onChange={this.onChange}>
                     <TabPane tab="我的档案" key="1">
 						<div className="success-content">Content of Tab Pane 1</div>
 					</TabPane>
 					<TabPane tab="档案查询" key="5">
 						<div className="success-content">Content of Tab Pane 2</div>
 					</TabPane>
-					<TabPane tab="资料下载" key="2">
-						<div className="success-content">Content of Tab Pane 1</div>
-					</TabPane>
-					<TabPane tab="档案/资料上传" key="3">
-						<div className="success-content">Content of Tab Pane 1</div>
-					</TabPane>
-					<TabPane tab="审核" key="4">
+					<TabPane tab="档案上传" key="3">
 						<div className="success-content">Content of Tab Pane 1</div>
 					</TabPane>
 					<TabPane tab="发布公告" key="8">
@@ -45,12 +51,12 @@ class Success extends React.Component {
                     <TabPane tab="修改密码" key="6">
 						<div className="success-content">Content of Tab Pane 3</div>						
 					</TabPane>
-					<TabPane tab="退出" key="7">
-						<div className="success-content">Content of Tab Pane 3</div>						
+					<TabPane tab="退出" key="7">						
 					</TabPane>
                 </Tabs>
             </div>
 		);
 	}
 }
+Success = connect((state) => state.success)(Success);
 export default Success

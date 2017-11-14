@@ -25,7 +25,7 @@ class Content extends React.Component {
         const { setInformation } = actions;
         return(
             <div className={(className || "" )+ " content-body"} >
-                {information ? <NoticeDetail setInformation={setInformation} id={id}/> : <ContentMain setInformation={setInformation} changeId={this.changeId}/>}
+                {information ? <NoticeDetail setInformation={setInformation} id={id}/> : <ContentMain setInformation={setInformation} router={this.props.router} changeId={this.changeId}/>}
             </div>
         )
 
