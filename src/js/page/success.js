@@ -9,6 +9,7 @@ import {
 } from 'antd';
 import '../../scss/success.scss';
 import uploadPassword from '../components/uploadPassword';
+import MakeAnnouncement from "../components/makeAnnouncement"
 const TabPane = Tabs.TabPane;
 // fetchdata(//地址字符串).then(data => {
 //    data 获取的数据
@@ -36,7 +37,7 @@ class Success extends React.Component {
 		return (
             <div className="bodyer">  
 				<TopImg num={window.num}/>
-                <Tabs type="card" onChange={this.onChange} activeKey="6">
+                <Tabs type="card" onChange={this.onChange} activeKey="8">
                     <TabPane tab="我的档案" key="1">
 						<div className="success-content">Content of Tab Pane 1</div>
 					</TabPane>
@@ -47,7 +48,9 @@ class Success extends React.Component {
 						<div className="success-content">Content of Tab Pane 1</div>
 					</TabPane>
 					<TabPane tab="发布公告" key="8">
-						<div className="success-content">Content of Tab Pane 1</div>
+						<div className="success-content">
+						    <MakeAnnouncement/>
+						</div>
 					</TabPane>
                     <TabPane tab="修改密码" key="6">
 						<div className="success-content">
