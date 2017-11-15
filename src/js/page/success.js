@@ -12,6 +12,7 @@ import '../../scss/success.scss';
 import uploadPassword from '../components/uploadPassword';
 import Upload from '../components/upload';
 import MakeAnnouncement from "../components/makeAnnouncement"
+import QueryMessage from '../components/queryMessage';
 const TabPane = Tabs.TabPane;
 // fetchdata(//地址字符串).then(data => {
 //    data 获取的数据
@@ -46,7 +47,9 @@ class Success extends React.Component {
 						</div>
 					</TabPane>
 					<TabPane tab="档案查询" key="5">
-						<div className="success-content">Content of Tab Pane 2</div>
+						<div className="success-content">
+							<QueryMessage />
+						</div>
 					</TabPane>
 					<TabPane tab="档案上传" key="3">
 						<div className="success-content">
