@@ -8,6 +8,7 @@ import {
     Tabs
 } from 'antd';
 import '../../scss/success.scss';
+import uploadPassword from '../components/uploadPassword';
 const TabPane = Tabs.TabPane;
 // fetchdata(//地址字符串).then(data => {
 //    data 获取的数据
@@ -21,9 +22,9 @@ class Success extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 	componentWillMount() {
-		if(!window.signInData) {
-			this.props.router.push('/');
-		}
+		// if(!window.signInData) {
+		// 	this.props.router.push('/');
+		// }
 	}
 	onChange(e) {
 		if(e == '7') {
@@ -49,7 +50,9 @@ class Success extends React.Component {
 						<div className="success-content">Content of Tab Pane 1</div>
 					</TabPane>
                     <TabPane tab="修改密码" key="6">
-						<div className="success-content">Content of Tab Pane 3</div>						
+						<div className="success-content">
+						 	<uploadPassword />
+						</div>						
 					</TabPane>
 					<TabPane tab="退出" key="7">						
 					</TabPane>
