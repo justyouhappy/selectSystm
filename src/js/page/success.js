@@ -39,11 +39,7 @@ class Success extends React.Component {
 		return (
             <div className="bodyer">  
 				<TopImg num={window.num}/>
-<<<<<<< HEAD
-                <Tabs type="card" onChange={this.onChange} activeKey="1">
-=======
-                <Tabs type="card" onChange={this.onChange} activeKey="8">
->>>>>>> hjl
+                <Tabs type="card" onChange={this.onChange}>
                     <TabPane tab="我的档案" key="1">
 						<div className="success-content">
 							<MyFile/>

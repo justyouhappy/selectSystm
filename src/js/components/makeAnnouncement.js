@@ -4,7 +4,6 @@ import {
 	Button
  } from 'antd';
 import fetchData from '../common/fetch'; 
-import TextArea from '../../../node_modules/_antd@2.13.10@antd/lib/input/TextArea';
 
 class MakeAnnouncement extends React.Component {
 	constructor() {
