@@ -39,7 +39,7 @@ module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
 		path: __dirname + '/statics',
-		publicPath: process.env.NODE_ENV === 'production' ? './statics': 'http://localhost:8080/statics',
+		publicPath: process.env.NODE_ENV === 'production' ? './statics': 'http://localhost:8080/statics/',
 		filename: 'js/index.js'
 	},
 	module: {
