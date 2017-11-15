@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import fetchdata from '../common/fetch';
 import TopImg from '../containers/topImg';
+import MyFile from '../components/myFile';
 import {
     Button,
     Tabs
@@ -36,9 +37,11 @@ class Success extends React.Component {
 		return (
             <div className="bodyer">  
 				<TopImg num={window.num}/>
-                <Tabs type="card" onChange={this.onChange} activeKey="6">
+                <Tabs type="card" onChange={this.onChange} activeKey="1">
                     <TabPane tab="我的档案" key="1">
-						<div className="success-content">Content of Tab Pane 1</div>
+						<div className="success-content">
+							<MyFile/>
+						</div>
 					</TabPane>
 					<TabPane tab="档案查询" key="5">
 						<div className="success-content">Content of Tab Pane 2</div>
