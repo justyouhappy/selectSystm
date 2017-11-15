@@ -23,7 +23,6 @@ class UploadPassword extends React.Component {
 		this.confirmPassword = this.confirmPassword.bind(this)
 		this.validation = this.validation.bind(this)
 		this.handleOk = this.handleOk.bind(this)
-		this.onHidden = this.onHidden.bind(this)
 	}
 
 	handleOk() {
@@ -52,7 +51,7 @@ class UploadPassword extends React.Component {
 	}
 
 	validation() {
-		const { newPassword, confirmPassword, oldPassword } = this.state;
+		const { newPassword , confirmPassword , oldPassword } = this.state;
 		if(newPassword == confirmPassword && newPassword && newPassword !== oldPassword) {
 			this.setState({
 				ErrorShow: false
