@@ -8,7 +8,7 @@ import {
     Tabs
 } from 'antd';
 import '../../scss/success.scss';
-import uploadPassword from '../components/uploadPassword';
+import UploadPassword from '../components/uploadPassword';
 const TabPane = Tabs.TabPane;
 // fetchdata(//地址字符串).then(data => {
 //    data 获取的数据
@@ -51,7 +51,7 @@ class Success extends React.Component {
 					</TabPane>
                     <TabPane tab="修改密码" key="6">
 						<div className="success-content">
-						 	<uploadPassword />
+						 	<UploadPassword />
 						</div>						
 					</TabPane>
 					<TabPane tab="退出" key="7">						
