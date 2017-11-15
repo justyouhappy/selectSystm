@@ -77,7 +77,7 @@ class UploadPassword extends React.Component {
 					修改密码
 				</div>
 				<div className="input-box">
-					{<Input type="password" size="large" className="input" addonBefore="请输入您的密码:" value={oldPassword} placeholder="在此输入密码" onChange={this.oldPassword}></Input>	}
+					<Input type="password" size="large" className="input" addonBefore="请输入您的密码:" value={oldPassword} placeholder="在此输入密码" onChange={this.oldPassword}></Input>	
 					{ErrorShow && <Alert message={message} className="alert" type="error" showIcon />}
 					<Input type="password" size="large" className="input" addonBefore="请输入新的密码:" value={newPassword} placeholder="在此输入新的密码" onChange={this.newPassword}></Input>	
 					<Input type="password" size="large" className="input" addonBefore="请确认新的密码:" value={confirmPassword} placeholder="在此确认新的密码" onChange={this.confirmPassword}></Input>			
