@@ -3,6 +3,8 @@ import '../../scss/upload.scss';
 import {
 	Upload, Icon, message, Select
 } from 'antd';
+import img1 from '../../img/shili1.png';
+import img2 from '../../img/shili2.png';
 const Option = Select.Option;
 const Dragger = Upload.Dragger;
 class Uploads extends React.Component {
@@ -57,8 +59,13 @@ class Uploads extends React.Component {
 						</Dragger>
 					</div>
 					<p className="upload-limit">
-						上传须知：
+						上传须知：本系统只支持97-2003版本的Excel表格
 					</p>
+					<p className="upload-limit">
+						ps：表头要求如下图
+					</p>
+					<img className="img1"src={img1}/>
+					<img className="img2"src={img2}/>
 				</div>
             </div>
 		);
