@@ -1,10 +1,11 @@
 import React from 'react';
 import '../../scss/upload.scss';
 import {
-	Upload, Icon, message, Select
+	Upload, Icon, message, Select, Modal
 } from 'antd';
 import img1 from '../../img/shili1.png';
 import img2 from '../../img/shili2.png';
+import { connect } from 'net';
 const Option = Select.Option;
 const Dragger = Upload.Dragger;
 class Uploads extends React.Component {
@@ -23,6 +24,12 @@ class Uploads extends React.Component {
 				message.error(`${info.file.name} 上传失败，请检查网络或阅读上传须知.`);
 			} else {
 				message.success(`${info.file.name} 上传成功.`);				
+			}
+			if(info.file.response.message) {
+				Modal.error({
+					title: '系统录入信息失败（不符合表结构要求）的学号或姓名',
+					content: info.file.response.message
+				});
 			}
 		} else if (status === 'error') {
 		    message.error(`${info.file.name} 上传失败，请检查网络或阅读上传须知.`);
