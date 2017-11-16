@@ -31,8 +31,25 @@ class MakeAnnouncement extends React.Component {
     }
     onOk() {
         const { title, content } = this.state;
-        console.log(title, content);
-        this.del();
+        fetchData('notice/insertNotice', {method: 'post', data: {ntopic: title, ncontents: content}}).then(data => {
+			if(data.message) {
+				Modal.error({
+					title: '发生错误',
+					content: data.message,
+				});
+			} else {
+                this.del();                
+				Modal.success({
+					title: '提示',
+					content: '发布成功'
+				})
+			}
+		}, () => {
+			Modal.error({
+				title: '发生错误',
+				content: '获取数据失败，请检查网络',
+			});
+		});
     }
     del() {
         this.setState({

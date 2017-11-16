@@ -95,6 +95,11 @@ module.exports = {
 				target: url,
 				secure: false,
 				changeOrigin: true
+			},
+			"/controller": {
+				target: url,
+				secure: false,
+				changeOrigin: true
 			}
 		},
 		historyApiFallback: true,

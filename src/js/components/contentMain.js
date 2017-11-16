@@ -4,7 +4,6 @@ import { Modal }from 'antd';
 import InformationList from './informationList';
 import SignIn from './signIn';
 import ConfirmModel from './confirmModal';
-import InformationVideo from './informationVideo';
 import fetchData from '../common/fetch';
 
 class ContentMain extends React.Component {
@@ -50,7 +49,6 @@ class ContentMain extends React.Component {
 					<SignIn router={this.props.router} onHidden={this.onHidden} onShow={this.onShow}/>
 					{visible && <ConfirmModel router={this.props.router} onHidden={this.onHidden}/>}
 				</div>
-				<InformationVideo/>
             </div>
         )
 

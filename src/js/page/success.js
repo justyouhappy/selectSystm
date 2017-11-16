@@ -9,7 +9,7 @@ import {
     Tabs
 } from 'antd';
 import '../../scss/success.scss';
-import Upload from '../components/upload';
+import Uploads from '../components/upload';
 import MakeAnnouncement from "../components/makeAnnouncement"
 import QueryMessage from '../components/queryMessage';
 import UploadPassword from '../components/uploadPassword';
@@ -38,7 +38,7 @@ class Success extends React.Component {
 	}
 	render() {
 		return (
-            <div className="bodyer">  
+            <div className="success-bodyer">  
 				<TopImg num={window.num}/>
                 <Tabs type="card" onChange={this.onChange}>
                     {window.signInData && window.signInData.status === "0" && <TabPane tab="我的档案" key="1">
@@ -53,7 +53,7 @@ class Success extends React.Component {
 					</TabPane>
 					{window.signInData && window.signInData.status === "2" && <TabPane tab="档案上传" key="3">
 						<div className="success-content">
-							<Upload />
+							<Uploads />
 						</div>
 					</TabPane>}
 					{window.signInData && window.signInData.status === "2" && <TabPane tab="发布公告" key="8">

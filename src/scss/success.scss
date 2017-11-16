@@ -9,6 +9,15 @@
         padding: 10px 25px;
     }
 }
-.success-content {
-    height: 600px;
+.success-bodyer {
+    width: 980px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: white;
+    margin: auto;
+    border-radius: 5px;
+    .success-content {
+        height: 700px;
+    }
 }
