@@ -64,7 +64,7 @@ class SignIn extends React.Component {
 			errorMessage = '请您输入电话号';
 		} else if(this.state.password == '') {
 			errorMessage = '请您输入密码';
-		} else if(userName.length != 10 && userName.length != 8) {
+		} else if(userName.length != 10 && userName.length != 8 && userName.length != 5) {
 			errorMessage = '用户名长度错误';
 		} else if(tel.length != 11 && tel) {
 			errorMessage = '手机号格式错误'
@@ -86,29 +86,48 @@ class SignIn extends React.Component {
 				password,
 				mb: tel
 			}
-			fetchData('login/teacher_student', {method: 'post', data: message}).then(data => {
-				if(data.error) {
+			if(staus == '0'){
+				fetchData('login/teacher_student', {method: 'post', data: message}).then(data => {
+					if(data.error) {
+						Modal.error({
+							title: '发生错误',
+							content: data.error,
+						});
+					} else {
+						window.signInData = data;
+						if(data.first !== 'false') {
+							this.props.onShow();						
+						} else {
+							//跳转到登录成功页
+							this.props.router.push('/success');
+						}
+					}
+				}, () => {
 					Modal.error({
 						title: '发生错误',
-						content: data.error,
+						content: '获取数据失败，请检查网络',
 					});
-				} else {
-					window.signInData = data;
-					if(data.first) {
-						this.props.onShow();						
+				});
+			} else {
+				//管理员登录
+				fetchData('login/admin', {method: 'post', data: {username: userName, password}}).then(data => {
+					if(data.error) {
+						Modal.error({
+							title: '发生错误',
+							content: data.error,
+						});
 					} else {
-						//跳转到登录成功页
+						window.signInData = data;
 						this.props.router.push('/success');
 					}
-				}
-			}, () => {
-				Modal.error({
-					title: '发生错误',
-					content: '获取数据失败，请检查网络',
+				}, () => {
+					Modal.error({
+						title: '发生错误',
+						content: '获取数据失败，请检查网络',
+					});
 				});
-			});
+			}
 		}
-
 	}
 	render() {
 		const { staus, userName, tel, password, errorMessage, Errorshow } = this.state;

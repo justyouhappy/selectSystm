@@ -30,11 +30,13 @@ class ConfirmModal extends React.Component {
 			password: firPassword,
 			id:window.signInData.userId
 		}}).then(data => {
-			if(data.message) {
+			if(data.message !== "0") {
 				this.props.router.push('/success');
 			} else {
 				this.setState({
 					Errorshow: true,
+					firPassword: '',
+					secPassword: '',
 					message: '修改失败，请重试'
 				});
 			}

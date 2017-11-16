@@ -8,6 +8,8 @@ import '../../scss/uploadPassword.scss';
 import {
 	Input , Modal , Button , Alert
 } from 'antd';
+import fetchData from '../common/fetch'; 
+
 class UploadPassword extends React.Component {
 	constructor(props) {
 		super(props);
@@ -26,7 +28,30 @@ class UploadPassword extends React.Component {
 	}
 
 	handleOk() {
-		console.log("success")
+		const message = {
+			oldPassword: this.state.oldPassword,
+			password: this.state.newPassword,
+			status: window.signInData.status,
+			id:window.signInData.userId
+		}
+		fetchData('update/oldpassword', {method: 'post', data: message}).then(data => {
+			if(data.error) {
+				Modal.error({
+					title: '发生错误',
+					content: data.error,
+				});
+			} else {
+				Modal.success({
+					title: '提示',
+					content: '修改密码成功'
+				})
+			}
+		}, () => {
+			Modal.error({
+				title: '发生错误',
+				content: '获取数据失败，请检查网络',
+			});
+		});
 	}
 
 	oldPassword(e) {
@@ -70,19 +95,19 @@ class UploadPassword extends React.Component {
 	}
 
 	render() { 
-		const { oldPassword , newPassword , confirmPassword , message, ErrorShow ,handleOk} = this.state
+		const { oldPassword , newPassword , confirmPassword , message, ErrorShow} = this.state
 		return (
 			<div className="rootBox">
 				<div className="title">
 					修改密码
 				</div>
-				<div className="input-box">
+				<div className="upload-input-box">
 					{ErrorShow && <Alert message={message} className="alert" type="error" showIcon />}
 					<Input type="password" size="large" className="input" addonBefore="请输入您的密码:" value={oldPassword} placeholder="在此输入密码" onChange={this.oldPassword}></Input>	
 					<Input type="password" size="large" className="input" addonBefore="请输入新的密码:" value={newPassword} placeholder="在此输入新的密码" onChange={this.newPassword}></Input>	
 					<Input type="password" size="large" className="input" addonBefore="请确认新的密码:" value={confirmPassword} placeholder="在此确认新的密码" onChange={this.confirmPassword}></Input>			
 				</div>
-					<Button key="submit" type="primary" size="large" className="btn" onClick={handleOk} disabled={ErrorShow || newPassword == '' || oldPassword == ''}>提交密码</Button>
+					<Button key="submit" type="primary" size="large" className="btn" onClick={this.handleOk} disabled={ErrorShow || newPassword == '' || oldPassword == ''}>提交密码</Button>
 			</div>
 		);
 	}

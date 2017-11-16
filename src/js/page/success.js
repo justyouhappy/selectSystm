@@ -26,9 +26,9 @@ class Success extends React.Component {
 		this.onChange = this.onChange.bind(this);
 	}
 	componentWillMount() {
-		// if(!window.signInData) {
-		// 	this.props.router.push('/');
-		// }
+		if(!window.signInData) {
+			this.props.router.push('/');
+		}
 	}
 	onChange(e) {
 		if(e == '7') {
@@ -41,26 +41,26 @@ class Success extends React.Component {
             <div className="bodyer">  
 				<TopImg num={window.num}/>
                 <Tabs type="card" onChange={this.onChange}>
-                    <TabPane tab="我的档案" key="1">
+                    {window.signInData && window.signInData.status === "0" && <TabPane tab="我的档案" key="1">
 						<div className="success-content">
-							<MyFile/>
+							{window.signInData && <MyFile data={window.signInData.student}/>}
 						</div>
-					</TabPane>
+					</TabPane>}
 					<TabPane tab="档案查询" key="5">
 						<div className="success-content">
 							<QueryMessage />
 						</div>
 					</TabPane>
-					<TabPane tab="档案上传" key="3">
+					{window.signInData && window.signInData.status === "2" && <TabPane tab="档案上传" key="3">
 						<div className="success-content">
 							<Upload />
 						</div>
-					</TabPane>
-					<TabPane tab="发布公告" key="8">
+					</TabPane>}
+					{window.signInData && window.signInData.status === "2" && <TabPane tab="发布公告" key="8">
 						<div className="success-content">
 						    <MakeAnnouncement/>
 						</div>
-					</TabPane>
+					</TabPane>}
                     <TabPane tab="修改密码" key="6">
 						<div className="success-content">
 						 	<UploadPassword />

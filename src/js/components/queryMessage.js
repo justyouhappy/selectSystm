@@ -4,7 +4,9 @@ import {
     Input,
     Modal
 } from 'antd';
+import MyFile from './myFile';
 import '../../scss/queryMessage.scss'
+import fetchData from '../common/fetch'; 
 
 class QueryMessage extends React.Component {
     constructor(props) {
@@ -12,7 +14,8 @@ class QueryMessage extends React.Component {
         this.state = {
             userName: '',
             userNum: '',
-            errorMes: ''
+            errorMes: '',
+            data: ''
         }
         this.confirm = this.confirm.bind(this);
         this.changeName = this.changeName.bind(this);
@@ -25,13 +28,31 @@ class QueryMessage extends React.Component {
             errorMes = '姓名不能为空';
         } else if(!userNum) {
             errorMes = '学号不能为空';
+        } else if(userNum.length != 10) {
+            errorMes = '学号长度错误';
         }
         if(!errorMes) {
             let userIfro = {
-                userName,
-                userNum
+                name: userName,
+                id: userNum
             }
-            console.log(userIfro);
+            fetchData('search/student', {method: 'post', data: userIfro}).then(data => {
+                if(data.error) {
+                    Modal.error({
+                        title: '发生错误',
+                        content: data.error,
+                    });
+                } else {
+                    this.setState({
+                        data: data.student
+                    })
+                }
+            }, () => {
+                Modal.error({
+                    title: '发生错误',
+                    content: '获取数据失败，请检查网络',
+                });
+            });
         } else {
             Modal.error({
                 title: '发生错误',
@@ -53,7 +74,7 @@ class QueryMessage extends React.Component {
         })
     }
     render() {
-        const {userName, userNum, errorMes} = this.state;
+        const {userName, userNum, errorMes, data} = this.state;
         return (
             <div className="query-wrapper">
                 <div className="query-top-bar">
@@ -67,7 +88,7 @@ class QueryMessage extends React.Component {
                         <Button type="primary" size="large" onClick={this.confirm} className="confirm-btn">查询</Button>
                     </Input.Group>
                 </div>
-                下面是展示信息
+                {data && <MyFile data={data}/>}
             </div>
         )
     }

@@ -85,6 +85,16 @@ module.exports = {
 				target: url,
 				secure: false,
 				changeOrigin: true
+			},
+			"/search": {
+				target: url,
+				secure: false,
+				changeOrigin: true
+			},
+			"/pageview": {
+				target: url,
+				secure: false,
+				changeOrigin: true
 			}
 		},
 		historyApiFallback: true,
