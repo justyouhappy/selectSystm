@@ -35,6 +35,7 @@ if(process.env.NODE_ENV === 'production') {
 		  }
   }));
 }
+plugins.push(new webpack.BannerPlugin('前端开发者： 于华健，何家乐，付浩然，章俊坤 。产品原型：刘志强，陈雪，叶林，王意罗，卢启凡，张斯杰。后台开发：杨永强'));
 module.exports = {
 	entry: './src/js/entry.jsx',
 	output: {
