@@ -18,10 +18,13 @@ class Uploads extends React.Component {
 	}
 	onChange(info) {
 		const status = info.file.status;
-		const error = info.file.response.error;
-		if (status === 'done' && !error) {
-		    message.success(`${info.file.name} 上传成功.`);
-		} else if (status === 'error'|| error) {
+		if (status === 'done') {
+			if(info.file.response.error) {
+				message.error(`${info.file.name} 上传失败，请检查网络或阅读上传须知.`);
+			} else {
+				message.success(`${info.file.name} 上传成功.`);				
+			}
+		} else if (status === 'error') {
 		    message.error(`${info.file.name} 上传失败，请检查网络或阅读上传须知.`);
 		}
 	}
@@ -29,7 +32,6 @@ class Uploads extends React.Component {
 		this.setState({
 			status: value
 		});
-		console.log(value);
 	}
 	render() {
 		return (
