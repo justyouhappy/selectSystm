@@ -3,9 +3,6 @@ import '../../scss/upload.scss';
 import {
 	Upload, Icon, message, Select, Modal
 } from 'antd';
-import img1 from '../../img/shili1.png';
-import img2 from '../../img/shili2.png';
-import { connect } from 'net';
 const Option = Select.Option;
 const Dragger = Upload.Dragger;
 class Uploads extends React.Component {
@@ -25,11 +22,11 @@ class Uploads extends React.Component {
 			} else {
 				message.success(`${info.file.name} 上传成功.`);				
 			}
-			if(info.file.response.message) {
+			if(info.file.response.errorMessage) {
 				Modal.error({
 					title: '系统录入信息失败（不符合表结构要求）的学号或姓名',
-					content: info.file.response.message
-				});
+					content: info.file.response.errorMessage
+				})
 			}
 		} else if (status === 'error') {
 		    message.error(`${info.file.name} 上传失败，请检查网络或阅读上传须知.`);
@@ -70,11 +67,6 @@ class Uploads extends React.Component {
 					<p className="upload-limit">
 						上传须知：本系统只支持97-2003版本的Excel表格
 					</p>
-					<p className="upload-limit">
-						ps：表头要求如下图
-					</p>
-					<img className="img1"src={img1}/>
-					<img className="img2"src={img2}/>
 				</div>
             </div>
 		);
